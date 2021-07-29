@@ -1,0 +1,7 @@
+name: @name@
+version: @version@
+description: A fun way to compete! Hit the target!
+authors: [yakovliam, bobby29831]
+website: https://yakovliam.com
+main: com.yakovliam.slimerange.SlimRangePlugin
+api-version: 1.17
