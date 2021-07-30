@@ -42,20 +42,6 @@ public class PlayerJoinListener implements Listener {
 
         // load into cache
         plugin.getUserCache().getCache().get(event.getPlayer().getUniqueId());
-
-        Player player = event.getPlayer();
-
-        // clear inventory
-        player.getInventory().clear();
-
-        // give iron hoe
-        ItemStack itemStack = new ItemStack(Material.IRON_HOE);
-        ItemMeta meta = Bukkit.getServer().getItemFactory().getItemMeta(Material.IRON_HOE);
-        meta.setLocalizedName(ChatColor.GRAY + "Gun");
-        meta.setLore(Collections.emptyList());
-        itemStack.setItemMeta(meta);
-
-        player.getInventory().setItem(0, new ItemStack(Material.IRON_HOE));
     }
 
     @EventHandler
