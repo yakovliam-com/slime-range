@@ -2,11 +2,15 @@ package com.yakovliam.slimerange;
 
 import com.yakovliam.slimerange.api.Plugin;
 import com.yakovliam.slimerange.api.message.Message;
+import com.yakovliam.slimerange.cooldown.CooldownManager;
 import com.yakovliam.slimerange.listener.PlayerItemListener;
 import com.yakovliam.slimerange.listener.PlayerJoinListener;
 import com.yakovliam.slimerange.listener.ProjectileHitListener;
+import com.yakovliam.slimerange.statistic.UserPointsStatistic;
 import com.yakovliam.slimerange.storage.Storage;
+import com.yakovliam.slimerange.task.StatisticUpdateRepeatingTask;
 import com.yakovliam.slimerange.user.UserCache;
+import dev.spaceseries.spacestatistics.SpaceStatistics;
 
 public class SlimeRangePlugin extends Plugin {
 
@@ -20,6 +24,16 @@ public class SlimeRangePlugin extends Plugin {
      */
     private UserCache userCache;
 
+    /**
+     * Cooldown manager
+     */
+    private CooldownManager cooldownManager;
+
+    /**
+     * User points statistic
+     */
+    private UserPointsStatistic userPointsStatistic;
+
     @Override
     public void onEnable() {
         Message.initAudience(this);
@@ -28,10 +42,18 @@ public class SlimeRangePlugin extends Plugin {
 
         this.userCache = new UserCache(this);
 
+        this.cooldownManager = new CooldownManager(this);
+
         // register listeners
         this.getServer().getPluginManager().registerEvents(new PlayerJoinListener(this), this);
         this.getServer().getPluginManager().registerEvents(new PlayerItemListener(this), this);
         this.getServer().getPluginManager().registerEvents(new ProjectileHitListener(this), this);
+
+        // register statistics
+        this.userPointsStatistic = new UserPointsStatistic(this);
+        userPointsStatistic.register();
+
+        new StatisticUpdateRepeatingTask(this).start();
     }
 
     @Override
@@ -56,5 +78,23 @@ public class SlimeRangePlugin extends Plugin {
      */
     public UserCache getUserCache() {
         return userCache;
+    }
+
+    /**
+     * Returns cooldown manager
+     *
+     * @return cooldown manager
+     */
+    public CooldownManager getCooldownManager() {
+        return cooldownManager;
+    }
+
+    /**
+     * Returns user points statistic
+     *
+     * @return statistic
+     */
+    public UserPointsStatistic getUserPointsStatistic() {
+        return userPointsStatistic;
     }
 }

@@ -6,6 +6,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
+import java.util.Collections;
+
 public class PlayerJoinListener implements Listener {
 
     /**
@@ -26,10 +28,14 @@ public class PlayerJoinListener implements Listener {
     public void onPlayerJoin(PlayerJoinEvent event) {
         // load into cache
         plugin.getUserCache().getCache().get(event.getPlayer().getUniqueId());
+        // add to statistic
+        plugin.getUserPointsStatistic().update(Collections.singletonList(event.getPlayer().getUniqueId()), true, true);
     }
 
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent event) {
+        // save data
+        plugin.getStorage().getStorageImplementation().saveUser(plugin.getUserCache().getCache().get(event.getPlayer().getUniqueId()).join());
         // invalidate from cache
         plugin.getUserCache().getCache().synchronous().invalidate(event.getPlayer().getUniqueId());
     }

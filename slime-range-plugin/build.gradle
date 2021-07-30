@@ -24,7 +24,8 @@ repositories {
     maven { url = 'https://oss.sonatype.org/content/repositories/central' }
     maven { url = "https://repo.mattstudios.me/artifactory/public/" }
     maven { url = "https://repo.aikar.co/content/groups/aikar/" }
-    maven { url 'https://libraries.minecraft.net/' }
+    maven { url = 'https://libraries.minecraft.net/' }
+    maven { url = 'https://repo.yakovliam.com/snapshots' }
 }
 
 dependencies {
@@ -45,6 +46,8 @@ dependencies {
     implementation 'com.github.ben-manes.caffeine:caffeine:3.0.3'
 
     implementation "me.mattstudios:triumph-msg-adventure:2.2.4-SNAPSHOT"
+
+    compileOnly "dev.spaceseries:SpaceStatistics:1.0.1-SNAPSHOT"
 }
 
 test {

@@ -5,3 +5,5 @@ authors: [yakovliam, bobby29831]
 website: https://yakovliam.com
 main: com.yakovliam.slimerange.SlimeRangePlugin
 api-version: 1.17
+depend:
+  - SpaceStatistics

@@ -12,6 +12,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.ProjectileHitEvent;
 
+import java.util.Collections;
 import java.util.Random;
 
 public class ProjectileHitListener implements Listener {
@@ -71,5 +72,7 @@ public class ProjectileHitListener implements Listener {
 
         // save
         plugin.getStorage().getStorageImplementation().saveUser(user);
+        // reload in cache
+        plugin.getUserPointsStatistic().update(Collections.singletonList(user.getUuid()), false, true);
     }
 }

@@ -55,6 +55,8 @@ public class JsonStorageImplementation extends StorageImplementation {
      */
     @Override
     public User getUser(UUID uuid) {
+        this.rootObject = jsonFile.parse().getAsJsonObject();
+
         JsonObject users = rootObject.get("users").getAsJsonObject();
         if (users.has(uuid.toString())) {
             return gson.fromJson(users.get(uuid.toString()).getAsJsonObject(), User.class);
