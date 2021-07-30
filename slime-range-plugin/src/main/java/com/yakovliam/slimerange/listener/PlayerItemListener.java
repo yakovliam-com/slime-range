@@ -1,7 +1,6 @@
 package com.yakovliam.slimerange.listener;
 
 import com.yakovliam.slimerange.SlimeRangePlugin;
-import com.yakovliam.slimerange.api.message.Message;
 import org.bukkit.Bukkit;
 import org.bukkit.Color;
 import org.bukkit.Material;
@@ -11,7 +10,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
-import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 
 public class PlayerItemListener implements Listener {
@@ -30,15 +28,6 @@ public class PlayerItemListener implements Listener {
      */
     public PlayerItemListener(SlimeRangePlugin plugin) {
         this.plugin = plugin;
-    }
-
-    @EventHandler
-    public void onPlayerDropItem(PlayerDropItemEvent event) {
-        Message.builder()
-                .addLine("&7Hey! You can't drop items here.")
-                .build()
-                .message(event.getPlayer());
-        event.setCancelled(true);
     }
 
     @EventHandler

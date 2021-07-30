@@ -10,7 +10,7 @@ public abstract class StorageImplementation {
     /**
      * Slime range plugin
      */
-    protected SlimeRangePlugin plugin;
+    protected final SlimeRangePlugin plugin;
 
     /**
      * Initializes the storage
