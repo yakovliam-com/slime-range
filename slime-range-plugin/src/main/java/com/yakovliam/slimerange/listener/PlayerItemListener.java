@@ -56,6 +56,7 @@ public class PlayerItemListener implements Listener {
 
         // fire projectile
         Arrow arrow = player.getWorld().spawnArrow(player.getLocation().add(0, 1.2, 0), player.getLocation().getDirection(), 1.5f, 8);
+        arrow.setShooter(player);
         arrow.setColor(Color.fromRGB(44, 144, 203));
 
         // spawn particles

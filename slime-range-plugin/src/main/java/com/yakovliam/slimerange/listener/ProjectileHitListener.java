@@ -5,6 +5,7 @@ import com.yakovliam.slimerange.api.message.Message;
 import com.yakovliam.slimerange.model.user.User;
 import org.bukkit.Color;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -61,6 +62,8 @@ public class ProjectileHitListener implements Listener {
                 .addLine("&bYou hit the target!")
                 .addLine("&a+" + randomPointAmount)
                 .build().message(shooter);
+
+        shooter.playSound(shooter.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f ,1f);
 
         // get user
         User user = plugin.getUserCache().getCache().get(shooter.getUniqueId()).join();
