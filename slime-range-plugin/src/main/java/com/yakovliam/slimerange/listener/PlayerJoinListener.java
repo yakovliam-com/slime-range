@@ -13,6 +13,8 @@ import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import java.util.Collections;
+
 public class PlayerJoinListener implements Listener {
 
     /**
@@ -49,7 +51,8 @@ public class PlayerJoinListener implements Listener {
         // give iron hoe
         ItemStack itemStack = new ItemStack(Material.IRON_HOE);
         ItemMeta meta = Bukkit.getServer().getItemFactory().getItemMeta(Material.IRON_HOE);
-        meta.setDisplayName(ChatColor.GRAY + "Gun");
+        meta.setLocalizedName(ChatColor.GRAY + "Gun");
+        meta.setLore(Collections.emptyList());
         itemStack.setItemMeta(meta);
 
         player.getInventory().setItem(0, new ItemStack(Material.IRON_HOE));
