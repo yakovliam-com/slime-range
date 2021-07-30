@@ -12,6 +12,7 @@ public class Storage {
 
     public Storage(SlimeRangePlugin plugin) {
         this.storageImplementation = new JsonStorageImplementation(plugin);
+        this.storageImplementation.init();
     }
 
     /**

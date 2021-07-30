@@ -1,7 +1,6 @@
 package com.yakovliam.slimerange.storage.implementation;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.yakovliam.slimerange.SlimeRangePlugin;

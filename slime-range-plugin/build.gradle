@@ -62,7 +62,7 @@ shadowJar {
     }
 
     relocate "dev.triumphteam.gui", "${project.ext.groupId}.lib.triumphgui"
-    relocate 'me.mattstudios.mfmsg', "${project.ext.groupId}.lib.mfmsg"
+    relocate 'me.mattstudios.msg', "${project.ext.groupId}.lib.mfmsg"
     relocate "net.kyori", "${project.ext.groupId}.lib.kyori"
     relocate "com.github.benmanes.caffeine", "${project.ext.groupId}.lib.caffeine"
     relocate "me.lucko.commodore", "${project.ext.groupId}.lib.commodore"

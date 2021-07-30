@@ -4,6 +4,7 @@ import com.yakovliam.slimerange.api.Plugin;
 import com.yakovliam.slimerange.api.message.Message;
 import com.yakovliam.slimerange.listener.PlayerItemListener;
 import com.yakovliam.slimerange.listener.PlayerJoinListener;
+import com.yakovliam.slimerange.listener.ProjectileHitListener;
 import com.yakovliam.slimerange.storage.Storage;
 import com.yakovliam.slimerange.user.UserCache;
 
@@ -30,6 +31,13 @@ public class SlimeRangePlugin extends Plugin {
         // register listeners
         this.getServer().getPluginManager().registerEvents(new PlayerJoinListener(this), this);
         this.getServer().getPluginManager().registerEvents(new PlayerItemListener(this), this);
+        this.getServer().getPluginManager().registerEvents(new ProjectileHitListener(this), this);
+    }
+
+    @Override
+    public void onDisable() {
+        // save storage
+        userCache.getCache().synchronous().asMap().forEach((uuid, user) -> this.storage.getStorageImplementation().saveUser(user));
     }
 
     /**
