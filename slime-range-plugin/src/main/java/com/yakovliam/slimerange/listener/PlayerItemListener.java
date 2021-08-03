@@ -49,14 +49,14 @@ public class PlayerItemListener implements Listener {
         if (cooldownInfo != null) {
             // you're on cooldown!
             Message.builder()
-                    .addLine("&7You can't shoot right now; you're on &ccooldown&7!")
+                    .addLine("&7You can't shoot right now; you're on &ccooldown &7for 3 seconds.")
                     .build()
                     .message(player);
             return;
         }
 
         // fire projectile
-        Arrow arrow = player.getWorld().spawnArrow(player.getLocation().add(0, 1.2, 0), player.getLocation().getDirection(), 1.5f, 5);
+        Arrow arrow = player.getWorld().spawnArrow(player.getLocation().add(0, 1.2, 0), player.getLocation().getDirection(), 1.8f, 4);
         arrow.setShooter(player);
         arrow.setColor(Color.fromRGB(44, 144, 203));
 
@@ -65,7 +65,7 @@ public class PlayerItemListener implements Listener {
 
         Bukkit.getScheduler().runTaskLater(plugin, arrow::remove, 200L); // 5 seconds
 
-        // add cooldown, 5 seconds
-        plugin.getCooldownManager().addCooldown(player.getUniqueId(), 5000L);
+        // add cooldown, 3 seconds
+        plugin.getCooldownManager().addCooldown(player.getUniqueId(), 3000L);
     }
 }

@@ -3,6 +3,7 @@ package com.yakovliam.slimerange;
 import com.yakovliam.slimerange.api.Plugin;
 import com.yakovliam.slimerange.api.message.Message;
 import com.yakovliam.slimerange.cooldown.CooldownManager;
+import com.yakovliam.slimerange.expansion.SlimeRangePlaceholderExpansion;
 import com.yakovliam.slimerange.listener.PlayerItemListener;
 import com.yakovliam.slimerange.listener.PlayerJoinListener;
 import com.yakovliam.slimerange.listener.ProjectileHitListener;
@@ -10,7 +11,6 @@ import com.yakovliam.slimerange.statistic.UserPointsStatistic;
 import com.yakovliam.slimerange.storage.Storage;
 import com.yakovliam.slimerange.task.StatisticUpdateRepeatingTask;
 import com.yakovliam.slimerange.user.UserCache;
-import dev.spaceseries.spacestatistics.SpaceStatistics;
 
 public class SlimeRangePlugin extends Plugin {
 
@@ -54,6 +54,9 @@ public class SlimeRangePlugin extends Plugin {
         userPointsStatistic.register();
 
         new StatisticUpdateRepeatingTask(this).start();
+
+        // register expansion
+        new SlimeRangePlaceholderExpansion(this).register();
     }
 
     @Override

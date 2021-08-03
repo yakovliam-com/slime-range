@@ -33,8 +33,7 @@ public class UserPointsStatistic extends Statistic<UUID, Double> {
 
     @Override
     protected Double get(UUID key) {
-        double points = plugin.getUserCache().getCache().get(key).join().getPoints();
-        return points;
+        return plugin.getUserCache().getCache().get(key).join().getPoints();
     }
 
     @Override
@@ -44,6 +43,6 @@ public class UserPointsStatistic extends Statistic<UUID, Double> {
 
     @Override
     protected String valueAsString(Double aDouble) {
-        return Double.toString(aDouble);
+        return Integer.toString(aDouble.intValue());
     }
 }
