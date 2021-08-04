@@ -3,6 +3,7 @@ package com.yakovliam.slimerange.listener;
 import com.yakovliam.slimerange.SlimeRangePlugin;
 import com.yakovliam.slimerange.api.message.Message;
 import com.yakovliam.slimerange.api.wrapper.Pair;
+import com.yakovliam.slimerange.item.GunItem;
 import org.bukkit.Bukkit;
 import org.bukkit.Color;
 import org.bukkit.Material;
@@ -39,8 +40,8 @@ public class PlayerItemListener implements Listener {
             return;
         }
 
-        // if item is not a hoe
-        if (!(event.getItem() != null && event.getItem().getType().equals(Material.IRON_HOE))) {
+        // if item is not a gun
+        if (!(event.getItem() != null && GunItem.isGun(event.getItem().getType()))) {
             return;
         }
 

@@ -2,6 +2,7 @@ package com.yakovliam.slimerange;
 
 import com.yakovliam.slimerange.api.Plugin;
 import com.yakovliam.slimerange.api.message.Message;
+import com.yakovliam.slimerange.command.CommandManager;
 import com.yakovliam.slimerange.cooldown.CooldownManager;
 import com.yakovliam.slimerange.expansion.SlimeRangePlaceholderExpansion;
 import com.yakovliam.slimerange.listener.PlayerItemListener;
@@ -57,6 +58,8 @@ public class SlimeRangePlugin extends Plugin {
 
         // register expansion
         new SlimeRangePlaceholderExpansion(this).register();
+
+        new CommandManager(this);
     }
 
     @Override
